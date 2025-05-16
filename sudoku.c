@@ -44,8 +44,46 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
+  int seen[10];
 
-    return 1;
+  // Validar filas
+  for(int i = 0; i < 9; i++){
+    for(int k = 0; k < 10; k++) seen[k] = 0;
+    for(int j = 0; j < 9; j++){
+      int val = n->sudo[i][j];
+      if(val == 0) continue;
+      if(seen[val]) return 0;
+      seen[val] = 1;
+    }
+  }
+
+  // Validar columnas
+  for(int j = 0; j < 9; j++){
+    for(int k = 0; k < 10; k++) seen[k] = 0;
+    for(int i = 0; i < 9; i++){
+      int val = n->sudo[i][j];
+      if(val == 0) continue;
+      if(seen[val]) return 0;
+      seen[val] = 1;
+    }
+  }
+
+  // Validar submatrices 3x3
+  for(int row = 0; row < 9; row += 3){
+    for(int col = 0; col < 9; col += 3){
+      for(int k = 0; k < 10; k++) seen[k] = 0;
+      for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 3; j++){
+          int val = n->sudo[row + i][col + j];
+          if(val == 0) continue;
+          if(seen[val]) return 0;
+          seen[val] = 1;
+        }
+      }
+    }
+  }
+
+  return 1;
 }
 
 
@@ -62,7 +100,9 @@ List* get_adj_nodes(Node* n){
         }
       }
     }
+
     if (fila == -1)return listAdj;
+    
     for(int v = 1; v <= 9; v++){
       Node *hijo = copy(n);
       hijo -> sudo[fila][col] = v;
