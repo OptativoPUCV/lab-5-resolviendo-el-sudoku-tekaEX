@@ -51,7 +51,7 @@ int is_valid(Node* n){
 
 List* get_adj_nodes(Node* n){
     List* listAdj=createList();
-    if(is_final) return listAdj;
+    if(is_final(n)) return listAdj;
 
     int fila = -1;
     int col = -1;
@@ -71,7 +71,7 @@ List* get_adj_nodes(Node* n){
 
       pushBack(listAdj, hijo);
     }
-    
+
     return listAdj;
 }
 
@@ -86,7 +86,7 @@ Node* DFS(Node* initial, int* cont){
 
 
 
-
+/*
 int main( int argc, char *argv[] ){
 
   Node* initial= read_file("s12a.txt");;
@@ -97,4 +97,4 @@ int main( int argc, char *argv[] ){
   print_node(final);
 
   return 0;
-}
+}*/
