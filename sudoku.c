@@ -51,7 +51,7 @@ int is_valid(Node* n){
 
 List* get_adj_nodes(Node* n){
     List* listAdj=createList();
-    if(is_final(n)) return listAdj;
+    if(is_final(n) == 0) return listAdj;
 
     int fila = -1;
     int col = -1;
