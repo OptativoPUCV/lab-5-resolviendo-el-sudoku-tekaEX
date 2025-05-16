@@ -28,3 +28,12 @@ sudoku.c:54:8: error: implicit declaration of function 'is_final' [-Werror=impli
         ^~~~~~~~
 cc1.exe: all warnings being treated as errors
 3cc500d
+Fri, May 16, 2025  9:36:47 AM: 
+Compilation failed
+In file included from test.c:5:0:
+sudoku.c: In function 'get_adj_nodes':
+sudoku.c:54:8: error: implicit declaration of function 'is_final' [-Werror=implicit-function-declaration]
+     if(is_final(n)) return listAdj;
+        ^~~~~~~~
+cc1.exe: all warnings being treated as errors
+48909fd
