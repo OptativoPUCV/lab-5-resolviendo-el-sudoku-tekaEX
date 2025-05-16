@@ -50,8 +50,29 @@ int is_valid(Node* n){
 
 
 List* get_adj_nodes(Node* n){
-    List* list=createList();
-    return list;
+    List* listAdj=createList();
+    if(is_final) return listAdj;
+
+    int fila = -1;
+    int col = -1;
+    for(int i = 0; i<9 && fila == -1; i++){
+      for(int j = 0; j < 9; j++){
+        if(n->sudo[i][j] == 0){
+          fila = i;
+          col = j;
+          break;
+        }
+      }
+    }
+
+    for(int v = 1; v <= 9; v++){
+      Node *hijo = copy(n);
+      hijo -> sudo[fila][col] = v;
+
+      pushBack(listAdj, hijo);
+    }
+    
+    return listAdj;
 }
 
 
@@ -65,7 +86,7 @@ Node* DFS(Node* initial, int* cont){
 
 
 
-/*
+
 int main( int argc, char *argv[] ){
 
   Node* initial= read_file("s12a.txt");;
@@ -76,4 +97,4 @@ int main( int argc, char *argv[] ){
   print_node(final);
 
   return 0;
-}*/
+}
